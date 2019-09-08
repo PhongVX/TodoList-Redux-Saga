@@ -1,0 +1,34 @@
+{
+  "name": "learningreduxsaga",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Client.js",
+  "scripts": {
+    "watch": "webpack --watch --info-verbosity verbose --mode development",
+    "build": "webpack --mode development",
+    "build-pro": "webpack --mode production"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "fibers": "^3.1.0",
+    "loader": "^2.1.1",
+    "node-sass": "^4.0.0",
+    "sass": "^1.23.0-module.beta.1",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.4.1",
+    "@material-ui/icons": "^4.4.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
