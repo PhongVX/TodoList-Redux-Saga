@@ -4,13 +4,19 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import TaskBoard from './TaskBoard';
 import theme from '../../commons/Theme'
 import './App.scss'
+import {Provider} from 'react-redux'
+import configureStore from '../../store/configureStore'
+
+const store = configureStore()
 
 export default class App extends Component {
     render() {
         return (
-            <MuiThemeProvider theme={theme}>
-                <TaskBoard/>
-            </MuiThemeProvider>
+            <Provider store={store}>
+                <MuiThemeProvider theme={theme}>
+                    <TaskBoard/>
+                </MuiThemeProvider>
+            </Provider>
         )
     }
 }

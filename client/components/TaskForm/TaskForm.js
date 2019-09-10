@@ -7,21 +7,40 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 
 class TaskForm extends Component {
     render() {
-        const {open} = this.props
+        const { open, onClose, classes } = this.props
         return (
-            <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+            <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                 <DialogContent>
-                    <h1>Dialog Content</h1>
+                    <TextField
+                        id="standard-multiline-flexible"
+                        label="Multiline"
+                        rowsMax="4"
+                        //value={""}
+                        //onChange={handleChange('multiline')}
+                        className={classes.textField}
+                        margin="normal"
+                    />
+                    <TextField
+                        id="standard-multiline-flexible"
+                        label="Multiline"
+                        multiline
+                        rowsMax="4"
+                        //value={""}
+                        //onChange={handleChange('multiline')}
+                        className={classes.textField}
+                        margin="normal"
+                    />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.handleClose} color="primary">
+                    <Button onClick={onClose} color="primary">
                         Cancel
             </Button>
-                    <Button onClick={this.handleClose} color="primary">
+                    <Button onClick={onClose} color="primary">
                         Ok
             </Button>
                 </DialogActions>
