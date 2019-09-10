@@ -6,27 +6,11 @@ import taskBoardStyles from './TaskBoard.style'
 import { STATUSES } from "../../../constants"
 import TaskList from '../../../components/TaskList'
 import TaskForm from '../../../components/TaskForm'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import  * as taskAction from '../../../actions/tasks'
 
-const listTask = [
-    {
-        id: 1,
-        title: "Read book",
-        description: "Read material ui book",
-        status: 0
-    },
-    {
-        id: 2,
-        title: "Play football",
-        description: "with my friends",
-        status: 2
-    },
-    {
-        id: 3,
-        title: "Play game",
-        description: "",
-        status: 1
-    }
-]
+
 class TaskBoard extends Component {
     
     constructor(props){
@@ -38,8 +22,14 @@ class TaskBoard extends Component {
         this.handleClose = this.handleClose.bind(this)
     }
 
+    componentDidMount(){
+        const {taskActionCreators} = this.props 
+        const {fetchListTaskRequest}= taskActionCreators
+        fetchListTaskRequest()
+    }
+
     renderBoard() {
-        const { classes } = this.props;
+        const { listTask } = this.props;
         let xhtml = null;
         xhtml = (
             <Grid container spacing={2}>
@@ -90,4 +80,16 @@ class TaskBoard extends Component {
     }
 }
 
-export default withStyles(taskBoardStyles)(TaskBoard)
+const mapStateToProps = state =>{
+    return{
+        listTask: state.tasks.listTask
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        taskActionCreators:bindActionCreators(taskAction, dispatch)
+    }
+} 
+
+export default withStyles(taskBoardStyles)(connect(mapStateToProps, mapDispatchToProps)(TaskBoard))
